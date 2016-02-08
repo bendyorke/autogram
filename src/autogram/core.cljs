@@ -1,5 +1,8 @@
 (ns autogram.core
-  (:require [reagent.core :as reagent :refer [atom]]))
+  (:require-macros [cljs.core.async.macros :refer [go-loop]])
+  (:require [reagent.core :as reagent :refer [atom]]
+            [cljs.core.async :refer [<!]]
+            [autogram.interval :refer [start listen silence]]))
 
 (enable-console-print!)
 
@@ -38,8 +41,5 @@
 (reagent/render-component [autogram]
                           (. js/document (getElementById "app")))
 
-(defn on-js-reload []
-  ;; optionally touch your app-state to force rerendering depending on
-  ;; your application
-  ;; (swap! app-state update-in [:__figwheel_counter] inc)
-)
+(defn on-js-reload [])
+
