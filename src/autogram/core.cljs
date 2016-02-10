@@ -9,7 +9,7 @@
 (enable-console-print!)
 
 (def speed 1500)
-(def anim-speed (/ speed 1))
+(def anim-speed (/ speed 2))
 
 (defonce app-state (atom {:from "Automagic"
                           :to "Autograms"
@@ -66,10 +66,7 @@
        [:span char])}))
 
 (defn letters-in-word [key word]
-  [:span {:style {:font-size 40
-                  :visibility "hidden"
-                  :position "absolute"
-                  :right "100vw"}}
+  [:span
     (->> (seq word)
          (map-indexed
            (fn iterate-over-word [i char]
@@ -77,14 +74,21 @@
 
 (defn position-words [from to]
   (calculate-commons from to)
-  [:div
+  ^{key (str from to)}
+  [:span {:style {:font-size 40
+                  :visibility "hidden"
+                  :position "absolute"
+                  :right "100vw"}}
    [letters-in-word :from from]
+   [:br]
    [letters-in-word :to to]])
 
 (defn autogram [letters current current-word]
   [:span {:style {:position "relative"
-                  :font-size 24}}
-   [:span {:style {:visibility "hidden"}} current-word]
+                  :font-size 36}}
+   [:span {:style {:visibility "hidden"}} (@app-state :from)]
+   [:br]
+   [:span {:style {:visibility "hidden"}} (@app-state :to)]
    (->> letters
         (map
           (fn [[key {:keys [value] position current}]]
