@@ -8,11 +8,11 @@
 
 (enable-console-print!)
 
-(def speed 1500)
-(def anim-speed (/ speed 2))
+(def speed 4000)
+(def anim-speed (/ speed 4))
 
-(defonce app-state (atom {:from "Automagicallyifnicent"
-                          :to "Autograms"
+(defonce app-state (atom {:from "Start with one word"
+                          :to "End at another!"
                           :letter-assocs {}
                           :letters {}
                           :interval (intv/start speed)

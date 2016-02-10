@@ -37,7 +37,7 @@
                ;; lein cljsbuild once min
                {:id "min"
                 :source-paths ["src"]
-                :compiler {:output-to "resources/public/js/compiled/autogram.js"
+                :compiler {:output-to "js/compiled/autogram.js"
                            :main autogram.core
                            :optimizations :advanced
                            :pretty-print false}}]}
