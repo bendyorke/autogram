@@ -11,7 +11,7 @@
 (def speed 1500)
 (def anim-speed (/ speed 2))
 
-(defonce app-state (atom {:from "Automagic"
+(defonce app-state (atom {:from "Automagicallyifnicent"
                           :to "Autograms"
                           :letter-assocs {}
                           :letters {}
@@ -65,12 +65,13 @@
      :reagent-render (fn [_ char]
        [:span char])}))
 
-(defn letters-in-word [key word]
-  [:span
-    (->> (seq word)
-         (map-indexed
-           (fn iterate-over-word [i char]
-             ^{:key (str key char i word)} [letter key char i])))])
+(defn letters-in-word [key]
+  (let [{:keys [from to]} @app-state]
+    [:div
+      (->> (seq (@app-state key))
+           (map-indexed
+             (fn iterate-over-word [i char]
+               ^{:key (str key char i from to)} [letter key char i])))]))
 
 (defn position-words [from to]
   (calculate-commons from to)
@@ -78,17 +79,20 @@
   [:span {:style {:font-size 40
                   :visibility "hidden"
                   :position "absolute"
-                  :right "100vw"}}
-   [letters-in-word :from from]
+                  :right "0vw"
+                  :display "inline-block"}}
+   [letters-in-word :from]
    [:br]
-   [letters-in-word :to to]])
+   [letters-in-word :to]])
 
 (defn autogram [letters current current-word]
   [:span {:style {:position "relative"
-                  :font-size 36}}
+                  :font-size 36
+                  :display "inline-block"}}
    [:span {:style {:visibility "hidden"}} (@app-state :from)]
    [:br]
    [:span {:style {:visibility "hidden"}} (@app-state :to)]
+   [:br]
    (->> letters
         (map
           (fn [[key {:keys [value] position current}]]
