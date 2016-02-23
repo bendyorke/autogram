@@ -1,10 +1,12 @@
 # autogram
 
-FIXME: Write a one-line description of your library/project.
+Transition between two words, automagically!
 
 ## Overview
 
-FIXME: Write a paragraph about the library/project and highlight its goals.
+I've always had this strange desire to replicate Keynote's text animations - especially the one where words will "slide" into another.  When I was trying to find a small problem to try tackling with ClojureScript, I knew this was the perfect fit.  Behold, in all it's glorious styling, the demo:
+
+http://bendyorke.com/autogram/
 
 ## Setup
 
@@ -31,9 +33,3 @@ To create a production build run:
 
 And open your browser in `resources/public/index.html`. You will not
 get live reloading, nor a REPL. 
-
-## License
-
-Copyright © 2014 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
