@@ -6,7 +6,7 @@ Transition between two words, automagically!
 
 I've always had this strange desire to replicate Keynote's text animations - especially the one where words will "slide" into another.  When I was trying to find a small problem to try tackling with ClojureScript, I knew this was the perfect fit.  Behold, in all it's glorious styling, the demo:
 
-[http://bendyorke.github.io/autogram/](bendyorke.github.io/autogram/)
+[bendyorke.github.io/autogram/](http://bendyorke.github.io/autogram/)
 
 ## Setup
 
